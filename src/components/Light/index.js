@@ -5,13 +5,15 @@ class Light extends React.Component {
     super(props);
     this.state = {
       light: "on",
-    };
+    }
+    this.changeLamp = this.changeLamp.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   changeLamp() {
     this.setState({
       light: "off",
-    });
+    })
     // функція, яка приймає новий об'єкт стану і замінює ним попередній
     // після цього реакт призводить до пере-виклику метода render() і оновлення даних на екрані
   }
