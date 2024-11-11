@@ -1,5 +1,5 @@
 import React from 'react';
-import AlohaPage from './pages/AlohaPage';
+import TodoPage from './pages/TodoPage';
 // import './reset.css';
 
 
@@ -18,7 +18,7 @@ class App extends React.Component { // Parent component (батьківська 
     render() {
       return ( 
         <section>
-          <AlohaPage/>
+          <TodoPage/>
         </section>
       )
     }
