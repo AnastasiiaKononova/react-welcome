@@ -1,6 +1,8 @@
 import React from "react";
 import TodoForm from "../../components/TodoForm";
 import TodoList from "../../components/TodoList";
+import styles from './TodoPage.module.css'
+
 class TodoPage extends React.Component {
 	constructor(props) {
 		super(props);
@@ -42,8 +44,8 @@ class TodoPage extends React.Component {
 	
 	render() {
 		return (
-			<div>
-				<TodoForm getCallback={this.getNewItem}/>
+			<div className={styles.container}>
+				<TodoForm getCallback={this.getNewItem} className={styles['red-text']}/>
 				<TodoList 
 					list={this.state.list} 
 					checkboxHandler={this.checkItemHandler}
