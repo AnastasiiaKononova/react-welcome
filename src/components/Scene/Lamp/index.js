@@ -1,43 +1,41 @@
-import React, { Component } from 'react'
-import './style.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "./style.css";
 
 class Lamp extends Component {
-constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-        // on: this.props.lightState - ТАК НЕ РОБИМО!
+      // on: this.props.lightState - ТАК НЕ РОБИМО!
+    };
+  }
+
+  /// ЗМІШУВАТИ ПРОПСИ І СТАН (наприклад, засновувати стан на пропсах - це ПОГАНИЙ КОД)
+
+  getParentSomeInfo = () => {
+    if (typeof this.props.callback !== "function") {
+      console.warn("Undefined callback");
+      return;
     }
-}
-
-/// ЗМІШУВАТИ ПРОПСИ І СТАН (наприклад, засновувати стан на пропсах - це ПОГАНИЙ КОД)
-  
-getParentSomeInfo = () => {
     // в пропсах лежить адреса функції, яку треба викликати
-    this.props.callback()
-}
+    this.props.callback();
+  };
 
-render() {
-    // const cnames = this.state.on ? 'lamp-on' : 'lamp-off';
-    const cnames = this.props.lightState ? 'lamp-on' : 'lamp-off';
+  render() {
+    //        const cnames = this.state.on ? 'lamp-on' : 'lamp-off';
+    const cnames = this.props.lightState ? "lamp-on" : "lamp-off";
     return (
-        <section>
-        <div className={cnames}>
-            
-        </div>
+      <section>
+        <div className={cnames}></div>
         <button onClick={this.getParentSomeInfo}>switch</button>
-        </section>
-    )
+      </section>
+    );
   }
 }
 
-
-// function Lamp(props) {
-//     const cn = props.lightState ? 'lamp-on' : 'lamp-off';
-//   return (
-//     <div className={cn}></div>
-//   )
-// }
-
-
+Lamp.propTypes = {
+  lightState: PropTypes.bool.isRequired,
+  callback: PropTypes.func.isRequired
+};
 
 export default Lamp;

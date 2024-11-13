@@ -1,33 +1,42 @@
-import React from 'react';
-import TodoPage from './pages/TodoPage';
-import UserList from './components/UserList';
+import React from "react";
+// import TodoPage from './pages/TodoPage';
+// import UserList from './components/UserList';
+import UserCard from "./components/UserCard";
+import Lamp from "./components/Scene/Lamp";
 
 // import './reset.css';
 
-
-class App extends React.Component { // Parent component (батьківська компонента)
+class App extends React.Component {
+  // Parent component (батьківська компонента)
   constructor(props) {
     super(props);
     this.state = {
-      render: true
-    }
+      render: true,
+    };
   }
   changeRender = () => {
     this.setState({
-      render: !this.state.render
-    })
+      render: !this.state.render,
+    });
+  };
+  render() {
+    const user = {
+      email: "e",
+      name: {
+        first: "a",
+        last: "b",
+      },
+    };
+    return (
+      <section>
+        <UserCard user={user}/>
+        {/* <Lamp /> */}
+      </section>
+    );
   }
-    render() {
-      return ( 
-        <section>
-          <UserList />
-        </section>
-      )
-    }
-  }
+}
 
 export default App;
-
 
 /*
 
