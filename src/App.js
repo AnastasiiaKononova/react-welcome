@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoPage from './pages/TodoPage';
+import SomeComp from './sandbox';
 // import './reset.css';
 
 
@@ -18,7 +19,7 @@ class App extends React.Component { // Parent component (батьківська 
     render() {
       return ( 
         <section>
-          <TodoPage/>
+          <SomeComp/>
         </section>
       )
     }
