@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoPage from './pages/TodoPage';
-import SomeComp from './sandbox';
+import UserList from './components/UserList';
+
 // import './reset.css';
 
 
@@ -19,7 +20,7 @@ class App extends React.Component { // Parent component (батьківська 
     render() {
       return ( 
         <section>
-          <SomeComp/>
+          <UserList />
         </section>
       )
     }
