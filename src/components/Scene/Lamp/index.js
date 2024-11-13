@@ -35,7 +35,12 @@ class Lamp extends Component {
 
 Lamp.propTypes = {
   lightState: PropTypes.bool.isRequired,
-  callback: PropTypes.func.isRequired
+  callback: PropTypes.func
 };
+
+Lamp.defaultProps = {
+  callback: () => {}
+}
+
 
 export default Lamp;

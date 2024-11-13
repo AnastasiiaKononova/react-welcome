@@ -29,8 +29,8 @@ class App extends React.Component {
     };
     return (
       <section>
-        <UserCard user={user}/>
-        {/* <Lamp /> */}
+        {/* <UserCard user={user}/> */}
+        <Lamp lightState={true} />
       </section>
     );
   }

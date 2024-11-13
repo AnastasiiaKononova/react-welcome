@@ -17,7 +17,7 @@ const UserCard = (props) => {
 }
 
 
- const userPropTypes = {
+ UserCard.propTypes  = {
     user: PropTypes.shape({
         name: PropTypes.shape({
             first: PropTypes.string.isRequired,
@@ -29,6 +29,6 @@ const UserCard = (props) => {
 }
 
 
-UserCard.propTypes = userPropTypes;
+
 
 export default UserCard;
