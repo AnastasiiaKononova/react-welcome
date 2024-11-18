@@ -1,14 +1,16 @@
 import React from 'react';
 import TodoItem from '../TodoItem';
+import styles from './TodoList.module.css';
+
 const TodoList = (props) => {
     return (
-        <ul>
-            {props.list.map(todo => <TodoItem   
-                                        todo={todo} 
-                                        key={todo.id} 
-                                        checkboxHandler={props.checkboxHandler}
-                                        deleteHandler={props.deleteHandler}/>)}
+        <section>
+        <h1>{props.heading}</h1>
+        <ul className={styles['list-wrapper']}>
+            {props.children}
         </ul>
+    </section>
     );
 }
 export default TodoList;
+

@@ -1,6 +1,6 @@
 import React from "react";
-// import TodoPage from './pages/TodoPage';
-// import UserList from './components/UserList';
+import TodoPage from './pages/TodoPage';
+import UserList from './components/UserList';
 import UserCard from "./components/UserCard";
 import Lamp from "./components/Scene/Lamp";
 import ListPage from "./pages/ListPage";
@@ -30,7 +30,7 @@ class App extends React.Component {
     };
     return (
       <section>
-        <ListPage/>
+        <TodoPage/>
       </section>
     );
   }
