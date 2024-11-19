@@ -4,6 +4,7 @@ import UserList from './components/UserList';
 import UserCard from "./components/UserCard";
 import Lamp from "./components/Scene/Lamp";
 import ListPage from "./pages/ListPage";
+import GridPage from "./pages/GridPage";
 
 // import './reset.css';
 
@@ -30,7 +31,7 @@ class App extends React.Component {
     };
     return (
       <section>
-        <TodoPage/>
+        <GridPage/>
       </section>
     );
   }
