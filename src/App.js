@@ -32,10 +32,7 @@ class App extends React.Component {
     };
     return (
       <section>
-        <FlexContainer>
-              <div>Content 1</div>
-              <div>Content 2</div>
-              </FlexContainer>
+        <UserList />
       </section>
     );
   }

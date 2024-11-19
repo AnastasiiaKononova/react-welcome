@@ -15,6 +15,7 @@ const FlexContainer = (props) => {
         </div>
     );
 }
+
 export default FlexContainer;
 
 FlexContainer.propTypes = {
