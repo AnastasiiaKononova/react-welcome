@@ -7,6 +7,7 @@ import ListPage from "./pages/ListPage";
 import GridPage from "./pages/GridPage";
 import FlexContainer from "./components/FlexContainer";
 import CounterPage from "./pages/CounterPage";
+import Parent from "./components/Parent";
 
 // import './reset.css';
 
@@ -33,7 +34,7 @@ class App extends React.Component {
     };
     return (
       <section>
-        <CounterPage />
+        <Parent />
       </section>
     );
   }
