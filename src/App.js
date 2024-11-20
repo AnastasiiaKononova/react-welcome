@@ -6,6 +6,7 @@ import Lamp from "./components/Scene/Lamp";
 import ListPage from "./pages/ListPage";
 import GridPage from "./pages/GridPage";
 import FlexContainer from "./components/FlexContainer";
+import CounterPage from "./pages/CounterPage";
 
 // import './reset.css';
 
@@ -32,7 +33,7 @@ class App extends React.Component {
     };
     return (
       <section>
-        <UserList />
+        <CounterPage />
       </section>
     );
   }
