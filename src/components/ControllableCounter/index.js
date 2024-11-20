@@ -3,7 +3,7 @@ import React, { PureComponent, Component } from 'react';
 import PropTypes from 'prop-types';
 
 
-class ControllableCounter extends PureComponent {
+class ControllableCounter extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,12 +11,19 @@ class ControllableCounter extends PureComponent {
         }
     }
 
-    // shouldComponentUpdate(nextProps, nextState){
-    //     // nextProps, nextState - нові дані, які приходять і на їхній основі ми визначаємо, чи потребує компонента оновлення
-    //     // this.props, this.state - поточні пропси і стейти, які актуальні до оновлення
-    //     // return true - компонента оновлюється
-    //     // return false - компонента не оновлюється
-    // }
+    shouldComponentUpdate(nextProps, nextState){
+        // nextProps, nextState - нові дані, які приходять і на їхній основі ми визначаємо, чи потребує компонента оновлення
+        // this.props, this.state - поточні пропси і стейти, які актуальні до оновлення
+        // return true - компонента оновлюється
+        // return false - компонента не оновлюється
+        if ((nextProps.step !== this.props.step) || (nextState.count === this.state.count)) {
+            return false
+        }
+        return true
+    }
+
+
+
     /*
     PureComponent - різновид React.Component, який базується на ідеї детермінованості (за одних і тих самих вхідних даних отримуємо один і той самий результат). За одних і тих самих пропсах або стейтах ми не перерендерюємо компоненту.
     PureComponent сам реалізує shouldComponentUpdate (тобто ви самі його реалізувати тут не можете)
@@ -84,7 +91,6 @@ class ControllableCounter extends PureComponent {
         return (
             <div>
                 <h1>count: {this.state.count}</h1>
-                <h2>step: {this.props.step}</h2>
                 <button onClick={this.increment}>+</button>
                 <button onClick={this.decrement}>-</button>
                 <button onClick={this.change}>Re-render</button>
