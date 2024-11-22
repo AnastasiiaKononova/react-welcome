@@ -1,61 +1,53 @@
 import React from "react";
-import TodoPage from './pages/TodoPage';
-import UserList from './components/UserList';
-import UserCard from "./components/UserCard";
-import Lamp from "./components/Scene/Lamp";
-import ListPage from "./pages/ListPage";
-import GridPage from "./pages/GridPage";
-import FlexContainer from "./components/FlexContainer";
-import CounterPage from "./pages/CounterPage";
-import Parent from "./components/Parent";
-import LoaderPage from "./pages/LoaderPage";
+import ContextTree from "./components/ContextTree";
+import ContextObj from "./context";
 
-// import './reset.css';
-
-class App extends React.Component {
-  // Parent component (батьківська компонента)
+class App extends React.Component { // Parent component (батьківська компонента)
   constructor(props) {
     super(props);
     this.state = {
-      render: true,
-    };
+      user: {
+        id: 1,
+        firstName: 'John',
+        lastName: 'Doe',
+        imageSrc: 'https://info.renome.ua/wp-content/uploads/2022/07/placeholder.png'
+      }
+    }
   }
-  changeRender = () => {
+
+  logOut = () => {
     this.setState({
-      render: !this.state.render,
-    });
-  };
-  render() {
-    const user = {
-      email: "e",
-      name: {
-        first: "a",
-        last: "b",
-      },
-    };
-    return (
-      <section>
-        <LoaderPage />
-      </section>
-    );
+      user: {}
+    })
   }
+  
+  render() {
+    // console.log(ContextObj.Provider, ContextObj.Consumer)
+    return (
+      <ContextObj.Provider value={this.state.user}>
+      <ContextTree />
+      <button onClick={this.logOut}>LogOut</button>
+      </ContextObj.Provider>
+    )
+
+}
+
 }
 
 export default App;
 
 /*
 
-Компоненти в React - це функція, яка отримує певні вхідні дані і повертає react-елементи
+Контекст
 
-Компоненти бувають двох типів:
+Контекст - це інтерфейс, який надає сховище для інформації та методи для підключення компоненти до цього сховища
 
-- Функціональні - це звичайна JS-функція, яка повертає створений react-елемент
+робота з контекстом складається з 3 кроків:
 
-- Класові - це клас, який наслідується від React.Component і описувати шаблон компоненти, яка має бути в інтерфейсі
-*/
++1. Створення контексту.
+Викликаємо функцію React.createContext() і отримуємо об'єкт контексту
 
-/*
-Рендер - процес відмальовування (отрисовки) елементів на сторінці браузера.
-(re-render - перемальовування, оновлення)
-Браузер оновлює елементи на екрані (ререндерить сторінку) в той момент, коли стек пустий
++2. Роздача контексту нижче по дереву компонент
+
++3. Підключення до контексту безпосередньо тої компоненти, якій він потрібен
 */
