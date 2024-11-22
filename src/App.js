@@ -24,9 +24,8 @@ class App extends React.Component { // Parent component (батьківська 
   render() {
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
-      <ContextObj.Provider value={this.state.user}>
+      <ContextObj.Provider value={[this.state, this.logOut]}>
       <ContextTree />
-      <button onClick={this.logOut}>LogOut</button>
       </ContextObj.Provider>
     )
 
