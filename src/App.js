@@ -1,5 +1,6 @@
 import React from "react";
 import ContextTree from "./components/ContextTree";
+import Header from "./components/Header";
 import ContextObj from "./context";
 
 class App extends React.Component { // Parent component (батьківська компонента)
@@ -25,6 +26,7 @@ class App extends React.Component { // Parent component (батьківська 
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
       <ContextObj.Provider value={[this.state, this.logOut]}>
+      <Header/>
       <ContextTree />
       </ContextObj.Provider>
     )
