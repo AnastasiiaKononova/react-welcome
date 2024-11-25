@@ -1,19 +1,21 @@
-import React from 'react';
-import ContextObj from '../../../context';
+import React from "react";
+import ContextObj from "../../../contexts/UserContext";
+import UserContext from "../../../contexts/UserContext";
 
 const UserMenu = () => {
-    return (
-       
-           <ContextObj.Consumer>
-            {([user, logOut]) => {
-                console.log(user);
-                return (
-                    <div style={{width: '200px', border: '2px solid blue'}}>
-                    <p>{user.firstName} {user.lastName}</p>
-                    </div>)
-            }}
-            </ContextObj.Consumer> 
-       
-    );
-}
+  return (
+    <UserContext.Consumer>
+      {([user, logOut]) => {
+        console.log(user);
+        return (
+          <div style={{ width: "200px", border: "2px solid blue" }}>
+            <p>
+              {user.firstName} {user.lastName}
+            </p>
+          </div>
+        );
+      }}
+    </UserContext.Consumer>
+  );
+};
 export default UserMenu;

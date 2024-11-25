@@ -1,38 +1,51 @@
 import React from "react";
 import ContextTree from "./components/ContextTree";
 import Header from "./components/Header";
-import ContextObj from "./context";
+import UserContext from "./contexts/UserContext";
+import ThemeContext from "./contexts/ThemeContext";
+import CONSTANTS from "./constants";
+const {THEMES} = CONSTANTS;
 
-class App extends React.Component { // Parent component (батьківська компонента)
+
+class App extends React.Component {
+  // Parent component (батьківська компонента)
   constructor(props) {
     super(props);
     this.state = {
       user: {
         id: 1,
-        firstName: 'John',
-        lastName: 'Doe',
-        imageSrc: 'https://info.renome.ua/wp-content/uploads/2022/07/placeholder.png'
-      }
-    }
+        firstName: "John",
+        lastName: "Doe",
+        imageSrc:
+          "https://info.renome.ua/wp-content/uploads/2022/07/placeholder.png",
+      },
+      theme: THEMES.LIGHT
+    };
   }
 
   logOut = () => {
     this.setState({
-      user: {}
+      user: {},
+    });
+  };
+
+  changeTheme = () => {
+    this.setState({
+      theme: this.state.theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT
     })
   }
-  
+
   render() {
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
-      <ContextObj.Provider value={[this.state, this.logOut]}>
-      <Header/>
-      <ContextTree />
-      </ContextObj.Provider>
-    )
-
-}
-
+      <ThemeContext.Provider value={[this.state.theme, this.changeTheme]}>
+        <UserContext.Provider value={[this.state, this.logOut]}>
+          <Header />
+          <ContextTree />
+        </UserContext.Provider>
+      </ThemeContext.Provider>
+    );
+  }
 }
 
 export default App;
