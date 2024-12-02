@@ -41,7 +41,7 @@ class App extends React.Component {
       <ThemeContext.Provider value={[this.state.theme, this.changeTheme]}>
         <UserContext.Provider value={[this.state, this.logOut]}>
           <Header />
-          <ContextTree />
+          <ContextTree superImportantProp = "value"/>
         </UserContext.Provider>
       </ThemeContext.Provider>
     );
