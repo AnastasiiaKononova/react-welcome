@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import UserContext from "./contexts/UserContext";
 import ThemeContext from "./contexts/ThemeContext";
 import CONSTANTS from "./constants";
+import SignUpForm from "./components/Form";
+import SignForm from "./pages/SignForm";
 const {THEMES} = CONSTANTS;
 
 
@@ -41,7 +43,7 @@ class App extends React.Component {
       <ThemeContext.Provider value={[this.state.theme, this.changeTheme]}>
         <UserContext.Provider value={[this.state, this.logOut]}>
           <Header />
-          <ContextTree superImportantProp = "value"/>
+          <SignForm/>
         </UserContext.Provider>
       </ThemeContext.Provider>
     );
