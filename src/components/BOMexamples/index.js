@@ -1,16 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class BOM extends Component {
-    render() {
-        return (
-            <div>
-               <p>ви зробили запит за адресою: {window.location.pathname}</p>
-               <p>в запиті була вказана додаткова інформація:
-                {window.location.search}
-               </p>
-            </div>
-        )
-       }
-    }
+  render() {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            window.location.assign("http://google.com");
+          }}
+        >
+          Assign
+        </button>
+        <button
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          Reload
+        </button>
+        <button
+          onClick={() => {
+            window.location.replace("http://google.com");
+          }}
+        >
+          Replace
+        </button>
+      </div>
+    );
+  }
+}
 
-    export default BOM;
+export default BOM;
