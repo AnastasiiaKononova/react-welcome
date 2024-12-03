@@ -7,6 +7,7 @@ import CONSTANTS from "./constants";
 import SignUpForm from "./components/Form";
 import SignForm from "./pages/SignForm";
 import BOM from "./components/BOMexamples";
+import './App.css'
 const { THEMES } = CONSTANTS;
 
 
