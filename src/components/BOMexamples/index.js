@@ -6,24 +6,12 @@ class BOM extends Component {
       <div>
         <button
           onClick={() => {
-            window.location.assign("http://google.com");
+            window.navigator.geolocation.getCurrentPosition((position) => {
+              console.log(position); // Без дозволу користувача нічого не вийде!
+            });
           }}
         >
-          Assign
-        </button>
-        <button
-          onClick={() => {
-            window.location.reload();
-          }}
-        >
-          Reload
-        </button>
-        <button
-          onClick={() => {
-            window.location.replace("http://google.com");
-          }}
-        >
-          Replace
+          Pick me up{" "}
         </button>
       </div>
     );
