@@ -1,29 +1,37 @@
 import React, { Component } from "react";
 
 class BOM extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {
+        firstName: "John",
+        lastName: "Doe",
+        age: 20,
+      },
+    };
+  }
   render() {
     return (
       <div>
         <p>Super cool text wich I want to write to clipboard</p>
         <button
           onClick={() => {
-            window.navigator.clipboard.readText().then((data) => {
-              console.log(data);
-            });
+            window.localStorage.setItem(
+              "user",
+              JSON.stringify(this.state.user)
+            );
           }}
         >
-          Read my clipboard
+          Save my userdata
         </button>
         <button
           onClick={() => {
-            window.navigator.clipboard
-              .writeText("Super cool text wich I want to write to clipboard")
-              .then(() => {
-                console.log("successfully copied!");
-              });
+            const data = window.localStorage.getItem("user");
+            console.log(JSON.parse(data));
           }}
         >
-          Write to my clipboard
+          console user data
         </button>
       </div>
     );
@@ -31,3 +39,10 @@ class BOM extends Component {
 }
 
 export default BOM;
+
+
+/*
+
+Зробити кнопку, яка записує до localStorage об'єкт користувача.
+За натиснення на другу кнопку виводить цей об'єкт з localStorage на консоль
+*/
