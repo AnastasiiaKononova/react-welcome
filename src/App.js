@@ -6,7 +6,8 @@ import ThemeContext from "./contexts/ThemeContext";
 import CONSTANTS from "./constants";
 import SignUpForm from "./components/Form";
 import SignForm from "./pages/SignForm";
-const {THEMES} = CONSTANTS;
+import BOM from "./components/BOMexamples";
+const { THEMES } = CONSTANTS;
 
 
 class App extends React.Component {
@@ -21,7 +22,7 @@ class App extends React.Component {
         imageSrc:
           "https://info.renome.ua/wp-content/uploads/2022/07/placeholder.png",
       },
-      theme: THEMES.LIGHT
+      theme: THEMES.LIGHT,
     };
   }
 
@@ -33,17 +34,16 @@ class App extends React.Component {
 
   changeTheme = () => {
     this.setState({
-      theme: this.state.theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT
-    })
-  }
+      theme: this.state.theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
+    });
+  };
 
   render() {
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
       <ThemeContext.Provider value={[this.state.theme, this.changeTheme]}>
         <UserContext.Provider value={[this.state, this.logOut]}>
-          <Header />
-          <SignForm/>
+          <BOM />
         </UserContext.Provider>
       </ThemeContext.Provider>
     );
