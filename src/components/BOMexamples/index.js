@@ -1,55 +1,64 @@
-import React, { Component } from "react";
+import React, {useState, useEffect} from 'react';
 
-class BOM extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {
-        firstName: "John",
-        lastName: "Doe",
-        age: 20,
-      },
-    };
-  }
+ function WindowResizer(props) {
+  const [screen, setScreen] = useState({
+    width: 0,
+    height: 0
+  });
 
-  componentDidMount() {
-    console.log("компоненту примонтували");
-  }
-  componentWillUnmount() {
-    console.log("компоненту зараз відмонтують");
-  }
-  render() {
-    console.log("BOM renders");
-    return (
-      <div>
-        <p>Super cool text wich I want to write to clipboard</p>
-        <button
-          onClick={() => {
-            window.localStorage.setItem(
-              "user",
-              JSON.stringify(this.state.user)
-            );
-          }}
-        >
-          Save my userdata
-        </button>
-        <button
-          onClick={() => {
-            const data = window.localStorage.getItem("user");
-            console.log(JSON.parse(data));
-          }}
-        >
-          console user data
-        </button>
-      </div>
-    );
-  }
+  useEffect(function () {
+    window.addEventListener('resize', resizeHandler)
+  }, [])
+
+  /*
+    useEffect - хук. Викликати на вищому рівні компоненти
+    цей хук приймає функцію і нічого не повертає
+    
+    Функція(коллбек), яку ми йому передаємо, викликається по-дефолту після кожного рендера компонети
+    
+    В цьому колбеку може виконуватись побічний ефект:
+
+    - обробники подій
+    - таймери, інтервали
+    - анімація нативна
+    - запит на сервер
+    
+    Якщо виклик колбеку після кожного рендеру - це не та поведінка, яка нам потрібна, ми маємо вказати, за якої умови цей коллбек має викликатись
+    
+    умова - другий аргумент хука - масив залежностей
+    
+    якщо це пустий масив - [] - то коллбек буде виконано один раз
+    якщо коллбек має бути виконано після зміни певного значення (пропса або стейта) він має бути вказаний в масиві залежностей
+    */
+
+  const  resizeHandler = ({currentTarget: {innerWidth, innerHeight}}) => {
+    setScreen({
+        width: innerWidth,
+        height: innerHeight
+    })
 }
 
-export default BOM;
+
+ // fetch -> оновлення стану з результатами запиту (бесконечний цикл будет)
+
+  return (
+    <div>
+      <p>width: {screen.width}</p>
+      <p>height: {screen.height}</p>
+    </div>
+  )
+}
+
+    
+
+export default WindowResizer;
 
 /*
+Побічні ефекти - вся робота, яка "вилізає в оточуючий світ": вплив на нативні елементи (обробка нативних подій, анімації, засновані на впливі на наивні об'єкти)
+а також мережеві запити
 
-Зробити кнопку, яка записує до localStorage об'єкт користувача.
-За натиснення на другу кнопку виводить цей об'єкт з localStorage на консоль
+Чисті функції - це функції які:
+
+1. Детерміновані (за одних і тих самих вхідних даних повертають один і той самий результат)
+2. Не мають побічних ефектів
 */
