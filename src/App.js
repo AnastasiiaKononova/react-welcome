@@ -7,15 +7,13 @@ import CONSTANTS from "./constants";
 import SignUpForm from "./components/Form";
 import SignForm from "./pages/SignForm";
 import BOM from "./components/BOMexamples";
-import DataLoader from './components/DataLoader';
-import Tree from './components/ContextTree';
+import DataLoader from "./components/DataLoader";
+import Tree from "./components/ContextTree";
 import "./App.css";
-import Octopus from './components/Octopus';
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import Octopus from "./components/Octopus";
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
-
-const {THEMES} = CONSTANTS;
-
+const { THEMES } = CONSTANTS;
 
 class App extends React.Component {
   // Parent component (батьківська компонента)
@@ -49,18 +47,16 @@ class App extends React.Component {
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
       <BrowserRouter>
-        <Switch>
-        <Route exact path='/' component={Octopus} />
-                <Route exact path="/home" component={SignForm} />
-                <Route exact path="/bom">
-            <BOM />
-          </Route>
-          <Route exact path="/data" component={DataLoader} />
-                <Route exact path="/tree" component={Tree} />
-                <Route path="/*" component={NotFound} />
-        </Switch>
-        <Link to="/bom">Link to bom-component</Link>
-        <Link to="/home">Link home</Link>
+        <Routes>
+          <Route path="/" element={<Octopus />} />
+          <Route path="/home" element={<SignForm />} />
+          <Route path="/bom" element={<BOM />} />
+          <Route path="/data" element={<DataLoader />} />
+          <Route path="/tree" element={<Tree />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+        <NavLink to="/bom">Link to bom-component</NavLink>
+        <NavLink to="/home">Link home</NavLink>
       </BrowserRouter>
     );
   }
@@ -69,11 +65,8 @@ class App extends React.Component {
 export default App;
 
 const NotFound = () => {
-  return (
-    <p>404 - Page not found</p>
-  )
-}
-
+  return <p>404 - Page not found</p>;
+};
 
 /*
 
