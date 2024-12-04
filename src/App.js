@@ -7,8 +7,13 @@ import CONSTANTS from "./constants";
 import SignUpForm from "./components/Form";
 import SignForm from "./pages/SignForm";
 import BOM from "./components/BOMexamples";
-import './App.css'
-const { THEMES } = CONSTANTS;
+import DataLoader from './components/DataLoader';
+import Tree from './components/ContextTree';
+import "./App.css";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+
+
+const {THEMES} = CONSTANTS;
 
 
 class App extends React.Component {
@@ -42,11 +47,18 @@ class App extends React.Component {
   render() {
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
-      <ThemeContext.Provider value={[this.state.theme, this.changeTheme]}>
-        <UserContext.Provider value={[this.state, this.logOut]}>
-          <BOM />
-        </UserContext.Provider>
-      </ThemeContext.Provider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/home" component={SignForm} />
+          <Route path="/bom">
+            <BOM />
+          </Route>
+          <Route path="/data" component={DataLoader} />
+          <Route path="/tree" component={Tree} />
+        </Switch>
+        <Link to="/bom">Link to bom-component</Link>
+        <Link to="/home">Link home</Link>
+      </BrowserRouter>
     );
   }
 }
@@ -55,16 +67,24 @@ export default App;
 
 /*
 
-Контекст
+Умовний рендеринг
 
-Контекст - це інтерфейс, який надає сховище для інформації та методи для підключення компоненти до цього сховища
+Умовний рендеринг - коли ми щось рендеримо (або ні) залежно від певної умови
 
-робота з контекстом складається з 3 кроків:
+Роутінг в React - умовний рендеринг на основі URL
 
-+1. Створення контексту.
-Викликаємо функцію React.createContext() і отримуємо об'єкт контексту
 
-+2. Роздача контексту нижче по дереву компонент
+React-router-dom
 
-+3. Підключення до контексту безпосередньо тої компоненти, якій він потрібен
+Три типа компонентів:
+
+1. Роутери (маршрутизатори) - диспетчер
+
+2. Роут-матчерс (стрілка)
+
+3. Роути (шляхи) - поїзди
+
+навігатори-лінки
+
+
 */
