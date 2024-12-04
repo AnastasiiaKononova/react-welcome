@@ -12,6 +12,7 @@ import Tree from "./components/ContextTree";
 import "./App.css";
 import Octopus from "./components/Octopus";
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+import NewCounter from "./components/NewCounter";
 
 const { THEMES } = CONSTANTS;
 
@@ -46,18 +47,32 @@ class App extends React.Component {
   render() {
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Octopus />} />
-          <Route path="/home" element={<SignForm />} />
-          <Route path="/bom" element={<BOM />} />
-          <Route path="/data" element={<DataLoader />} />
-          <Route path="/tree" element={<Tree />} />
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
-        <NavLink to="/bom">Link to bom-component</NavLink>
-        <NavLink to="/home">Link home</NavLink>
-      </BrowserRouter>
+      <UserContext.Provider value={[this.state.user, this.logOut]}>
+        <ThemeContext.Provider value={[this.state.theme, this.changeTheme]}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Octopus />} />
+              <Route path="/home" element={<SignForm />} />
+              <Route path="/bom" element={<BOM />} />
+              <Route path="/data" element={<DataLoader />} />
+              <Route path="/tree" element={<Tree />} />
+              <Route path="/counter" element={<NewCounter />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+            <ul>
+              <li>
+                <NavLink to="/bom">Link to bom-component</NavLink>
+              </li>
+              <li>
+                <NavLink to="/tree">Link tree</NavLink>
+              </li>
+              <li>
+                <NavLink to="/counter">Link counter</NavLink>
+              </li>
+            </ul>
+          </BrowserRouter>
+        </ThemeContext.Provider>
+      </UserContext.Provider>
     );
   }
 }
@@ -119,6 +134,5 @@ React-router-dom
 
 
 */
-
 
 // таска - прописати роутер і описати шляхи та пункти меню для всіх компонент, які ми з вами писали раніше
