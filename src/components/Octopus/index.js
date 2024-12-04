@@ -1,30 +1,23 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 
-class Octopus extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        mood: 'sad'
+function Octopus (props) {
+       const [mood, setMood] = useState('sad');
+
+   const clickHandler = () => {
+        setMood(mood === 'sad' ? 'happy' : 'sad');
     }
-  }
-  
-  clickHandler = () => {
-    this.setState({
-        mood: this.state.mood === 'sad' ? 'happy' : 'sad' 
-    })
+
+        const url = mood === "sad" ? "/images/sadoct.jpeg" : "/images/happyoct.jpeg";
+
+        return (
+            <section onClick={clickHandler}>
+                <img src={url} />
+            </section>
+           
+        );
 }
-  
-render() {
-    // може виконуватись ще якась робота
-    const url =  this.state.mood === 'sad' ? '/images/sadoct.jpeg' : '/images/happyoct.jpeg';
-    return (
-        <section onClick={this.clickHandler}>
-            <img src={url} />
-        </section>
-       
-    );
-}
-}
+
+
 export default Octopus;
-// props - статичні дані, які приходять в компоненту ззовні (від батьківської компоненти)
-// state - стан - динамічні дані які існують тільки всередині самої компоненти 
+
+// Таска: переписати компоненту на функціональну + хук useState
