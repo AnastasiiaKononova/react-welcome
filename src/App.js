@@ -14,6 +14,7 @@ import Octopus from "./components/Octopus";
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import NewCounter from "./components/NewCounter";
 import UserList from "./components/UserList";
+import Timer from "./components/Timer";
 
 const { THEMES } = CONSTANTS;
 
@@ -59,6 +60,7 @@ class App extends React.Component {
               <Route path="/tree" element={<Tree />} />
               <Route path="/counter" element={<NewCounter />} />
               <Route path="/userlist" element={<UserList />} />
+              <Route path="/timer" element={<Timer />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
             <ul>
@@ -73,6 +75,9 @@ class App extends React.Component {
               </li>
               <li>
                 <NavLink to="/userlist">Link to userlist</NavLink>
+              </li>
+              <li>
+                <NavLink to="/timer">Link to timer</NavLink>
               </li>
             </ul>
           </BrowserRouter>
