@@ -15,6 +15,8 @@ import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import NewCounter from "./components/NewCounter";
 import UserList from "./components/UserList";
 import Timer from "./components/Timer";
+import PhoneLoader from "./components/PhoneLoader";
+
 
 const { THEMES } = CONSTANTS;
 
@@ -60,6 +62,7 @@ class App extends React.Component {
               <Route path="/tree" element={<Tree />} />
               <Route path="/counter" element={<NewCounter />} />
               <Route path="/userlist" element={<UserList />} />
+              <Route path='/phoneloader' element={<PhoneLoader />} />
               <Route path="/timer" element={<Timer />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
@@ -76,6 +79,7 @@ class App extends React.Component {
               <li>
                 <NavLink to="/userlist">Link to userlist</NavLink>
               </li>
+              <li><NavLink to='/phoneloader'>Link to phone loader</NavLink></li>
               <li>
                 <NavLink to="/timer">Link to timer</NavLink>
               </li>
