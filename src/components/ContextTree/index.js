@@ -53,7 +53,7 @@ function ContextTree(props) {
       <button onClick={memoizedLogValue}>Click to log value</button>
       ContextTree
       <button onClick={changeTheme}>ChangeTheme</button>
-      <Parent />
+      <Parent callbackProp={memoizedLogValue}/>
     </div>
   );
 }
