@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-function WindowResizer(props) {
+function WindowResizer (props) {
   const [tickTack, setTick] = useState(true);
   const [screen, setScreen] = useState({
     width: 0,
     height: 0,
   });
 
-  useEffect(function () {
-    console.log("ефект навишено");
-    window.addEventListener("resize", resizeHandler);
-    // якщо перед відмонтуванням треба почистити за собою, ця функція має повернути інший коллбек, який і виконує роботу по очистці ефектів
-    return function () {
-      // отут чистимо за собою
-      console.log("ефект почищено");
-      window.removeEventListener("resize", resizeHandler);
-    };
-  }, [tickTack]);
+  useEffect(
+    function () {
+      console.log('ефект навишено');
+      window.addEventListener('resize', resizeHandler);
+      // якщо перед відмонтуванням треба почистити за собою, ця функція має повернути інший коллбек, який і виконує роботу по очистці ефектів
+      return function () {
+        // отут чистимо за собою
+        console.log('ефект почищено');
+        window.removeEventListener('resize', resizeHandler);
+      };
+    },
+    [tickTack]
+  );
 
   /*
     useEffect - хук. Викликати на вищому рівні компоненти
@@ -58,9 +61,13 @@ function WindowResizer(props) {
     <div>
       <p>width: {screen.width}</p>
       <p>height: {screen.height}</p>
-      <button onClick={() => {
-        setTick(!tickTack)
-      }}>onClick</button>
+      <button
+        onClick={() => {
+          setTick(!tickTack);
+        }}
+      >
+        onClick
+      </button>
     </div>
   );
 }

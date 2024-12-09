@@ -1,12 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const Apple = (props) => {
-  
-    console.log("apple render");
+const Apple = props => {
+  console.log('apple render');
 
-  return <div>
-            Apple is {props.color}
-        </div>;
+  return <div>Apple is {props.color}</div>;
 };
 
 export default Apple;

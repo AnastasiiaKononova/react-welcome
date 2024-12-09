@@ -1,31 +1,32 @@
-import React from "react";
+import React from 'react';
 
 class Light extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       light: true,
-    }
+    };
   }
 
-  changeLamp = (event) => {
+  changeLamp = event => {
     this.setState({
-      light: !this.state.light ,
-    })
+      light: !this.state.light,
+    });
     // функція, яка приймає новий об'єкт стану і замінює ним попередній
     // після цього реакт призводить до пере-виклику метода render() і оновлення даних на екрані
-  }
+  };
 
   clickHandler = () => {
     this.changeLamp(); // this is undefined??
-  }
+  };
 
-  render() {
-    return <h1 onClick={this.changeLamp}>Lamp {this.state.light ? 'on' : 'off'}</h1>
-    }
+  render () {
+    return (
+      <h1 onClick={this.changeLamp}>Lamp {this.state.light ? 'on' : 'off'}</h1>
+    );
+  }
 }
 /// Таска: зробити так, щоби вмикання-вимикання лампочки було багаторазовим
-
 
 /*
 }

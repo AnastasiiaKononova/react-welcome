@@ -25,14 +25,14 @@ import Spinner from '../Spinner';
 //                 error
 //             })
 //         })
-        
+
 //         .finally(() => {
 //             this.setState({
 //                 isFetching: false
 //             })
 //         })
 //     }
-    
+
 //     render() {
 //         return this.props.children(this.state)
 //     }
@@ -41,19 +41,21 @@ import Spinner from '../Spinner';
 // export default PhoneLoader;
 
 function PhoneLoader (props) {
-    const {data, error, isFetching} = useData(() => {
-        return fetch('/phones.json')
-        .then(res => res.json())
+  const { data, error, isFetching } = useData(() => {
+    return fetch('/phones.json').then(res => res.json());
   });
-   
-    return (
-        <ol>
-              {data.map(p => <li key={p.id}>{p.brand} - {p.model}</li>)}
-              {error & <p>Ooops, error</p>}
-              {isFetching && <Spinner />}
-         </ol>
-    )
-  
+
+  return (
+    <ol>
+      {data.map(p => (
+        <li key={p.id}>
+          {p.brand} - {p.model}
+        </li>
+      ))}
+      {error & <p>Ooops, error</p>}
+      {isFetching && <Spinner />}
+    </ol>
+  );
 }
 
 export default PhoneLoader;

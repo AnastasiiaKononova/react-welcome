@@ -4,38 +4,45 @@ import DataLoader from '../../components/DataLoader';
 import Spinner from '../../components/Spinner';
 
 class LoaderPage extends Component {
-    render() {
-        return (
-            <div>
-                 <DataLoader fetchCallback={() => {
-                      return fetch('/users.json')
-                      .then(res => res.json())
-                }}>
-                    {(state) => {
-                    return (
-                        <ul>
-                            {state.isFetching && <Spinner />}
-                            {state.data.map(u => <li key={u.id}>{u.name}</li>)}
-                        </ul>
-                    );
-                     }}
-
-</DataLoader>
-                <DataLoader fetchCallback={() => {
-                      return fetch('/phones.json')
-                      .then(res => res.json())
-                }}>
-                    {(state) => {
-                        return (
-                            <ol>
-                                {state.data.map(p => <li key={p.id}>{p.brand} - {p.model}</li>)}
-                            </ol>
-                        );
-                    }}
-                    </DataLoader>
-            </div>
-        );
-    }
+  render () {
+    return (
+      <div>
+        <DataLoader
+          fetchCallback={() => {
+            return fetch('/users.json').then(res => res.json());
+          }}
+        >
+          {state => {
+            return (
+              <ul>
+                {state.isFetching && <Spinner />}
+                {state.data.map(u => (
+                  <li key={u.id}>{u.name}</li>
+                ))}
+              </ul>
+            );
+          }}
+        </DataLoader>
+        <DataLoader
+          fetchCallback={() => {
+            return fetch('/phones.json').then(res => res.json());
+          }}
+        >
+          {state => {
+            return (
+              <ol>
+                {state.data.map(p => (
+                  <li key={p.id}>
+                    {p.brand} - {p.model}
+                  </li>
+                ))}
+              </ol>
+            );
+          }}
+        </DataLoader>
+      </div>
+    );
+  }
 }
 
 export default LoaderPage;
@@ -46,4 +53,3 @@ export default LoaderPage;
 2. HOC (High Order Component - Компонента вищого порядку)
 3. Користувацькі хуки
 */
-                

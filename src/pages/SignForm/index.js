@@ -4,9 +4,9 @@ import SignUpForm from '../../components/Form';
 const SignForm = () => {
   return (
     <div>
-        <SignUpForm/>
+      <SignUpForm />
     </div>
   );
-}
+};
 
 export default SignForm;

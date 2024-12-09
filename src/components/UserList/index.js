@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { getUser } from "../../api/getUser";
-import UserCard from "../UserCard";
-import Spinner from "../Spinner";
+import React, { useState, useEffect } from 'react';
+import { getUser } from '../../api/getUser';
+import UserCard from '../UserCard';
+import Spinner from '../Spinner';
 
-function UserList(props) {
+function UserList (props) {
   const [users, setUsers] = useState([]);
   const [isFetching, setFetching] = useState(true);
   const [error, setError] = useState(null);
@@ -14,12 +14,12 @@ function UserList(props) {
   //  temporary dead zone (тимчасова мертва зона) - ділянка коду, на якій змінна ще не визначена
   // стосується const, let
 
-  function load() {
+  function load () {
     getUser(page)
       .then(({ results }) => {
         setUsers(results);
       })
-      .catch((error) => {
+      .catch(error => {
         setError(error);
       })
       .finally(() => {
@@ -31,24 +31,23 @@ function UserList(props) {
     if (page > 1) {
       setPage(page - 1);
     }
-  }
-  
+  };
 
   const nextBtnHandler = () => {
     setPage(page + 1);
   };
 
-const layout = users.map((u) => <UserCard user={u} key={u.login.uuid} />);
-const errorMessage = <p>Ooops, something goes wrong</p>;
-return (
-  <section style={{ display: "flex", flexWrap: "wrap" }}>
-    <button onClick={prevBtnHandler}>Prev page</button>
-    <button onClick={nextBtnHandler}>Next page</button>
-    {isFetching && <Spinner />}
-    {error && errorMessage}
-    {layout}
-  </section>
-);
+  const layout = users.map(u => <UserCard user={u} key={u.login.uuid} />);
+  const errorMessage = <p>Ooops, something goes wrong</p>;
+  return (
+    <section style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <button onClick={prevBtnHandler}>Prev page</button>
+      <button onClick={nextBtnHandler}>Next page</button>
+      {isFetching && <Spinner />}
+      {error && errorMessage}
+      {layout}
+    </section>
+  );
 }
 
 export default UserList;

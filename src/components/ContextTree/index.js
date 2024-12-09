@@ -4,16 +4,16 @@ import React, {
   useEffect,
   useCallback,
   useMemo,
-} from "react";
-import Parent from "./Parent";
-import ThemeContext from "../../contexts/ThemeContext";
-import styles from "./ContextTree.module.css";
-import cx from "classnames";
-import CONSTANTS from "../../constants";
+} from 'react';
+import Parent from './Parent';
+import ThemeContext from '../../contexts/ThemeContext';
+import styles from './ContextTree.module.css';
+import cx from 'classnames';
+import CONSTANTS from '../../constants';
 const { THEMES } = CONSTANTS;
 
-function ContextTree(props) {
-  const [value, setValue] = useState("");
+function ContextTree (props) {
+  const [value, setValue] = useState('');
   const [theme, changeTheme] = useContext(ThemeContext);
 
   // const logValue = () => {console.log(value)}
@@ -23,7 +23,7 @@ function ContextTree(props) {
   }, [value]);
 
   useEffect(() => {
-    console.log("функція logValue була перестворена заново");
+    console.log('функція logValue була перестворена заново');
   }, [memoizedLogValue]);
 
   // const cnames = cx({
@@ -45,15 +45,15 @@ function ContextTree(props) {
   return (
     <div className={memoClasses}>
       <input
-        type="text"
-        name="value"
+        type='text'
+        name='value'
         value={value}
         onChange={changeHandler}
       ></input>
       <button onClick={memoizedLogValue}>Click to log value</button>
       ContextTree
       <button onClick={changeTheme}>ChangeTheme</button>
-      <Parent callbackProp={memoizedLogValue}/>
+      <Parent callbackProp={memoizedLogValue} />
     </div>
   );
 }

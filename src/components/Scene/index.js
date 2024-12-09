@@ -3,31 +3,29 @@ import Lamp from './Lamp';
 import SceneText from './SceneText';
 import './style.css';
 
-
 class Scene extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            light: true
-        }
-    }
+  constructor (props) {
+    super(props);
+    this.state = {
+      light: true,
+    };
+  }
 
-    parentCallback = () => {
-                this.setState({
-                    light: !this.state.light
-                })
-            }
+  parentCallback = () => {
+    this.setState({
+      light: !this.state.light,
+    });
+  };
 
-  render() {
-    const{light} = this.state;
+  render () {
+    const { light } = this.state;
     const cnames = light ? 'light' : 'off';
     return (
       <div className={cnames}>
-        <SceneText lightValue={light}/>
-        <Lamp lightState= {light} 
-        callback={this.parentCallback}/>
+        <SceneText lightValue={light} />
+        <Lamp lightState={light} callback={this.parentCallback} />
       </div>
-    )
+    );
   }
 }
 

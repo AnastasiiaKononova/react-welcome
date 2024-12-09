@@ -2,51 +2,52 @@ import React, { Component } from 'react';
 import Apple from './Apple';
 
 class Tree extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            color: 'green'
-        }
-    }
-    
-    componentDidMount() {
-        console.log('компонента була примонтована')
-    }
-    
-    shouldComponentUpdate() {
-        console.log('чи потрібно мені оновлюватись?')
-        // має повертати true або false
-        //  true - якщо за певної умови компонента МАЄ оновитись
-        // false - якщо компонента не має оновлюватись
-        
-        // ПЕРЕДЧАСНА ОПТИМІЗАЦІЯ - ЦЕ ЗЛО
-        return true
-    }
-    
-    componentDidUpdate() {
-        console.log('компонента оновилась')
-    }
-    
-    componentWillUnmount() {
-        console.log('компонента зараз помре')
-        // зробити якусь останню роботу перед тим, як компонента помре 
-        // підходить, щоби прибрати за собою перед закриттям компоненти (почистити таймаути, прибрати зайві вручну навішані eventListeners)
-        // як тільки метод завершить виконуватись, компонента всьо
-    }
-    changeColor = () => {
-        this.setState({
-            color: 'red'
-        })
-    }
-    
-    render() { // завжди має бути синхронним методом!
-        return (
-            <div onClick={this.changeColor}>
-                Tree
-                <Apple color={this.state.color}/>
-            </div>
-        );
-    }
+  constructor (props) {
+    super(props);
+    this.state = {
+      color: 'green',
+    };
+  }
+
+  componentDidMount () {
+    console.log('компонента була примонтована');
+  }
+
+  shouldComponentUpdate () {
+    console.log('чи потрібно мені оновлюватись?');
+    // має повертати true або false
+    //  true - якщо за певної умови компонента МАЄ оновитись
+    // false - якщо компонента не має оновлюватись
+
+    // ПЕРЕДЧАСНА ОПТИМІЗАЦІЯ - ЦЕ ЗЛО
+    return true;
+  }
+
+  componentDidUpdate () {
+    console.log('компонента оновилась');
+  }
+
+  componentWillUnmount () {
+    console.log('компонента зараз помре');
+    // зробити якусь останню роботу перед тим, як компонента помре
+    // підходить, щоби прибрати за собою перед закриттям компоненти (почистити таймаути, прибрати зайві вручну навішані eventListeners)
+    // як тільки метод завершить виконуватись, компонента всьо
+  }
+  changeColor = () => {
+    this.setState({
+      color: 'red',
+    });
+  };
+
+  render () {
+    // завжди має бути синхронним методом!
+    return (
+      <div onClick={this.changeColor}>
+        Tree
+        <Apple color={this.state.color} />
+      </div>
+    );
+  }
 }
 export default Tree;
 /*

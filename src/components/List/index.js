@@ -1,16 +1,13 @@
 import React from 'react';
 
-const List = (props) => {
+const List = props => {
   return (
     <article>
-        <h1>{props.heading}</h1>
-        <ul>
-            {props.children}
-        </ul>
-
+      <h1>{props.heading}</h1>
+      <ul>{props.children}</ul>
     </article>
   );
-}
+};
 
 export default List;
 

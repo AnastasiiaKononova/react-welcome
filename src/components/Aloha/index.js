@@ -1,9 +1,9 @@
-import React from "react";
-import "./style.css";
-import "animate.css";
+import React from 'react';
+import './style.css';
+import 'animate.css';
 
 class Aloha extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       isGreeting: true,
@@ -16,11 +16,11 @@ class Aloha extends React.Component {
     });
   };
 
-  render() {
-    const hreetingText = this.state.isGreeting ? "Hello" : "Bye";
+  render () {
+    const hreetingText = this.state.isGreeting ? 'Hello' : 'Bye';
     return (
       <h2
-        className="red-big-text animate__animated animate__bounceIn"
+        className='red-big-text animate__animated animate__bounceIn'
         onClick={this.clickHandler}
       >
         {hreetingText}, {this.props.name}

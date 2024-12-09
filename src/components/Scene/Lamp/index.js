@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./style.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './style.css';
 
 class Lamp extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       // on: this.props.lightState - ТАК НЕ РОБИМО!
@@ -13,17 +13,17 @@ class Lamp extends Component {
   /// ЗМІШУВАТИ ПРОПСИ І СТАН (наприклад, засновувати стан на пропсах - це ПОГАНИЙ КОД)
 
   getParentSomeInfo = () => {
-    if (typeof this.props.callback !== "function") {
-      console.warn("Undefined callback");
+    if (typeof this.props.callback !== 'function') {
+      console.warn('Undefined callback');
       return;
     }
     // в пропсах лежить адреса функції, яку треба викликати
     this.props.callback();
   };
 
-  render() {
+  render () {
     //        const cnames = this.state.on ? 'lamp-on' : 'lamp-off';
-    const cnames = this.props.lightState ? "lamp-on" : "lamp-off";
+    const cnames = this.props.lightState ? 'lamp-on' : 'lamp-off';
     return (
       <section>
         <div className={cnames}></div>
@@ -35,12 +35,11 @@ class Lamp extends Component {
 
 Lamp.propTypes = {
   lightState: PropTypes.bool.isRequired,
-  callback: PropTypes.func
+  callback: PropTypes.func,
 };
 
 Lamp.defaultProps = {
-  callback: () => {}
-}
-
+  callback: () => {},
+};
 
 export default Lamp;

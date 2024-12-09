@@ -1,36 +1,35 @@
-import React from "react";
-import ContextTree from "./components/ContextTree";
-import Header from "./components/Header";
-import UserContext from "./contexts/UserContext";
-import ThemeContext from "./contexts/ThemeContext";
-import CONSTANTS from "./constants";
-import SignUpForm from "./components/Form";
-import SignForm from "./pages/SignForm";
-import BOM from "./components/BOMexamples";
-import DataLoader from "./components/DataLoader";
-import Tree from "./components/ContextTree";
-import "./App.css";
-import Octopus from "./components/Octopus";
-import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
-import NewCounter from "./components/NewCounter";
-import UserList from "./components/UserList";
-import Timer from "./components/Timer";
-import PhoneLoader from "./components/PhoneLoader";
-
+import React from 'react';
+import ContextTree from './components/ContextTree';
+import Header from './components/Header';
+import UserContext from './contexts/UserContext';
+import ThemeContext from './contexts/ThemeContext';
+import CONSTANTS from './constants';
+import SignUpForm from './components/Form';
+import SignForm from './pages/SignForm';
+import BOM from './components/BOMexamples';
+import DataLoader from './components/DataLoader';
+import Tree from './components/ContextTree';
+import './App.css';
+import Octopus from './components/Octopus';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import NewCounter from './components/NewCounter';
+import UserList from './components/UserList';
+import Timer from './components/Timer';
+import PhoneLoader from './components/PhoneLoader';
 
 const { THEMES } = CONSTANTS;
 
 class App extends React.Component {
   // Parent component (батьківська компонента)
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       user: {
         id: 1,
-        firstName: "John",
-        lastName: "Doe",
+        firstName: 'John',
+        lastName: 'Doe',
         imageSrc:
-          "https://info.renome.ua/wp-content/uploads/2022/07/placeholder.png",
+          'https://info.renome.ua/wp-content/uploads/2022/07/placeholder.png',
       },
       theme: THEMES.LIGHT,
     };
@@ -48,40 +47,42 @@ class App extends React.Component {
     });
   };
 
-  render() {
+  render () {
     // console.log(ContextObj.Provider, ContextObj.Consumer)
     return (
       <UserContext.Provider value={[this.state.user, this.logOut]}>
         <ThemeContext.Provider value={[this.state.theme, this.changeTheme]}>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Octopus />} />
-              <Route path="/home" element={<SignForm />} />
-              <Route path="/bom" element={<BOM />} />
-              <Route path="/data" element={<DataLoader />} />
-              <Route path="/tree" element={<Tree />} />
-              <Route path="/counter" element={<NewCounter />} />
-              <Route path="/userlist" element={<UserList />} />
+              <Route path='/' element={<Octopus />} />
+              <Route path='/home' element={<SignForm />} />
+              <Route path='/bom' element={<BOM />} />
+              <Route path='/data' element={<DataLoader />} />
+              <Route path='/tree' element={<Tree />} />
+              <Route path='/counter' element={<NewCounter />} />
+              <Route path='/userlist' element={<UserList />} />
               <Route path='/phoneloader' element={<PhoneLoader />} />
-              <Route path="/timer" element={<Timer />} />
-              <Route path="/*" element={<NotFound />} />
+              <Route path='/timer' element={<Timer />} />
+              <Route path='/*' element={<NotFound />} />
             </Routes>
             <ul>
               <li>
-                <NavLink to="/bom">Link to bom-component</NavLink>
+                <NavLink to='/bom'>Link to bom-component</NavLink>
               </li>
               <li>
-                <NavLink to="/tree">Link tree</NavLink>
+                <NavLink to='/tree'>Link tree</NavLink>
               </li>
               <li>
-                <NavLink to="/counter">Link counter</NavLink>
+                <NavLink to='/counter'>Link counter</NavLink>
               </li>
               <li>
-                <NavLink to="/userlist">Link to userlist</NavLink>
+                <NavLink to='/userlist'>Link to userlist</NavLink>
               </li>
-              <li><NavLink to='/phoneloader'>Link to phone loader</NavLink></li>
               <li>
-                <NavLink to="/timer">Link to timer</NavLink>
+                <NavLink to='/phoneloader'>Link to phone loader</NavLink>
+              </li>
+              <li>
+                <NavLink to='/timer'>Link to timer</NavLink>
               </li>
             </ul>
           </BrowserRouter>

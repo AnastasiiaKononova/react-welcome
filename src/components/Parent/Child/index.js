@@ -1,14 +1,14 @@
 import React, { Component, PureComponent } from 'react';
 
 class Child extends PureComponent {
-    render() {
-        console.log('child re-render')
-        return (
-            <div>
-                <h1>Prop: {this.props.num}</h1>
-            </div>
-        );
-    }
+  render () {
+    console.log('child re-render');
+    return (
+      <div>
+        <h1>Prop: {this.props.num}</h1>
+      </div>
+    );
+  }
 }
 
 export default Child;

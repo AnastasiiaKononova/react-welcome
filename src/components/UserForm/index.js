@@ -1,55 +1,58 @@
 import React, { Component } from 'react';
 class UserForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            userpass: ''
-        }
-    }
-    
-    clickHandler = (event) => {
-        event.preventDefault();
-        console.log(this.state);
-    }
-   
-    // changeHandler = (event) => {
-    //     this.setState({
-    //         nameInput: event.target.value
-    //     })
-    // }
-    // passInput = (event) => {
-    //     this.setState({
-    //         passInput: event.target.value
-    //     })
-    // }
-    generalChangeHandler = ({target: {name, value}}) => {
- 
-        // const name = event.target.name;
-        // const value = event.target.value;
-        this.setState({
-            [name]: value
-        })
-    }
-   
-    render() {
-        return (
-            <form onSubmit={this.clickHandler}>
-                <h2>Type your name, please</h2>
-                <input type="text" 
-                    value={this.state.username} 
-                    onChange={this.generalChangeHandler} 
-                    placeholder="Name"
-                    name="username"/>  
-                <input type="password" 
-                    value={this.state.userpass} 
-                    onChange={this.generalChangeHandler} 
-                    placeholder="Pass"
-                    name="userpass"/>
-                <button>Send</button>
-            </form>
-        );
-    }
+  constructor (props) {
+    super(props);
+    this.state = {
+      username: '',
+      userpass: '',
+    };
+  }
+
+  clickHandler = event => {
+    event.preventDefault();
+    console.log(this.state);
+  };
+
+  // changeHandler = (event) => {
+  //     this.setState({
+  //         nameInput: event.target.value
+  //     })
+  // }
+  // passInput = (event) => {
+  //     this.setState({
+  //         passInput: event.target.value
+  //     })
+  // }
+  generalChangeHandler = ({ target: { name, value } }) => {
+    // const name = event.target.name;
+    // const value = event.target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  render () {
+    return (
+      <form onSubmit={this.clickHandler}>
+        <h2>Type your name, please</h2>
+        <input
+          type='text'
+          value={this.state.username}
+          onChange={this.generalChangeHandler}
+          placeholder='Name'
+          name='username'
+        />
+        <input
+          type='password'
+          value={this.state.userpass}
+          onChange={this.generalChangeHandler}
+          placeholder='Pass'
+          name='userpass'
+        />
+        <button>Send</button>
+      </form>
+    );
+  }
 }
 export default UserForm;
 
