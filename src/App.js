@@ -5,7 +5,7 @@ import UserContext from './contexts/UserContext';
 import ThemeContext from './contexts/ThemeContext';
 import CONSTANTS from './constants';
 import SignUpForm from './components/Form';
-import SignForm from './pages/SignForm';
+// import SignForm from './pages/SignForm';
 import BOM from './components/BOMexamples';
 import DataLoader from './components/DataLoader';
 import Tree from './components/ContextTree';
@@ -16,6 +16,7 @@ import NewCounter from './components/NewCounter';
 import UserList from './components/UserList';
 import Timer from './components/Timer';
 import PhoneLoader from './components/PhoneLoader';
+import SignForm from './components/SignForm';
 
 const { THEMES } = CONSTANTS;
 
@@ -61,6 +62,7 @@ class App extends React.Component {
               <Route path='/tree' element={<Tree />} />
               <Route path='/counter' element={<NewCounter />} />
               <Route path='/userlist' element={<UserList />} />
+              <Route path='/form' element={<SignForm />} />
               <Route path='/phoneloader' element={<PhoneLoader />} />
               <Route path='/timer' element={<Timer />} />
               <Route path='/*' element={<NotFound />} />
@@ -84,6 +86,7 @@ class App extends React.Component {
               <li>
                 <NavLink to='/timer'>Link to timer</NavLink>
               </li>
+              <li><NavLink to='/form'>Link to form</NavLink></li>
             </ul>
           </BrowserRouter>
         </ThemeContext.Provider>
