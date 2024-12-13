@@ -32,6 +32,12 @@ function reducer (state, action) {
       };
       break;
     }
+    case 'agreement': {
+      return {
+        ...state,
+        [action.type]: action.checked,
+      };
+    }
     case 'another action type': {
       // іншим чином змінюємо стейт
     }
@@ -67,6 +73,14 @@ const SignForm = () => {
     const action = {
       type: name,
       value,
+    };
+    dispatch(action);
+  };
+
+  const checkboxHandler = ({ target: { name, checked } }) => {
+    const action = {
+      type: name,
+      checked,
     };
     dispatch(action);
   };
@@ -153,8 +167,14 @@ const SignForm = () => {
         <option value='Female'>Female</option>
         <option value='Nonbinary'>Nonbinary</option>
       </select>
+      <label>
+        <input type='checkbox' name='agreement' onChange={checkboxHandler} />
+        Im agree with rules
+      </label>
     </form>
   );
 };
 
 export default SignForm;
+
+/// Додати до поточної форми чекбокс для погодження правил сайту
